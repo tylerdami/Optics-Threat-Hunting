@@ -4,23 +4,27 @@ Some threat hunting queries for Cylance Optics advanced query mode.
 [Cylance Official Advanced Query Mode Docs](https://docs.blackberry.com/en/unified-endpoint-security/blackberry-ues/administration/administration/Analyzing-endpoint-data-collected-by-Optics/Using-InstaQuery-and-advanced-query/Create-an-advanced-query)
 
 ## Windows General Threat Hunting
-### Windows event logs cleared
+### Services.exe launching scripting engine - https://car.mitre.org/analytics/CAR-2014-05-002/
+```
+process where process.name in~ ("cmd.exe", "powershell.exe","pwsh.exe") and process.parent.name like~ "services.exe"
+```
+### Windows event logs cleared - https://car.mitre.org/analytics/CAR-2016-04-002/
 ```
 process where process.command_line like~ "wevtutil* cl*"
 ```
-### Certutil used to encrypt or decrypt files
+### Certutil used to encrypt or decrypt files - https://attack.mitre.org/techniques/T1140/
 ```
 process where process.command_line in~("certutil* -encode*","certutil* -decode*")
 ```
-### BitsADMIN transfer or download. 
+### BitsADMIN transfer or download. - https://attack.mitre.org/software/S0190/
 ```
 process where process.name like~ "bitsadmin.exe" and process.command_line in~ ("*/Transfer*","*/Addfile*")
 ```
-### Command prompt used to disable Windows Firewall
+### Command prompt used to disable Windows Firewall - https://attack.mitre.org/techniques/T1562/004/
 ```
 process where process.command_line like~ "netsh* advfirewall* set* currentprofile* state* off*"
 ```
-### New Local User added or user added to administrators
+### New Local User added or user added to administrators - https://attack.mitre.org/techniques/T1136/001/
 ```
 process where process.command_line in~ ("*net user /add*","*New-LocalUser*","*net localgroup administrators*")
 ```
