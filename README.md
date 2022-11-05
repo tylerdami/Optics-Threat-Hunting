@@ -3,6 +3,12 @@ Some threat hunting queries for Cylance Optics advanced query mode.
 
 [Cylance Official Advanced Query Mode Docs](https://docs.blackberry.com/en/unified-endpoint-security/blackberry-ues/administration/administration/Analyzing-endpoint-data-collected-by-Optics/Using-InstaQuery-and-advanced-query/Create-an-advanced-query)
 
+## Windows General Threat Hunting
+### Windows event logs cleared
+```
+process where process.command_line like~ "wevtutil* cl*"
+```
+
 ## Powershell 
 ### Powershell Remoting Initiated 
 ```
@@ -19,6 +25,10 @@ process where process.command_line regex~ ".*powershell.*[--]+[Ee^]{1,2}[NnCcOoD
 ### PowerShell Base64 Inline Decode
 ```
 process where process.command_line regex~ ".*GetString.*Convert.::FromBase64String.*"
+```
+### Powershell used to clear event logs
+```
+scripting where powershell_trace.script_block like~ "*Clear-EventLog*"
 ```
 
 ## Living off the Land
