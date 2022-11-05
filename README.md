@@ -33,3 +33,8 @@ network where process.name in("bitsadmin.exe","csvde.exe","dsquery.exe","ftp.exe
 ```
 process where process.command_line like~ "C:\\Windows\\Temp\\*.exe"
 ```
+
+### AV and Secuirty Produt Enumeration
+```
+process where process.name == "wmic.exe" and process.command_line like~ "/Namespace:\\\\root\\SecurityCenter2 Path AntiVirusProduct Get displayName /Format:List"
+```
