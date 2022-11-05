@@ -1,0 +1,3 @@
+All powershell remoting activity
+scripting where powershell_trace.script_block like~ "New-PSSession -ComputerName*" or powershell_trace.script_block like~ "Enter-PsSession*"
+
