@@ -13,7 +13,10 @@ process where process.command_line like~ "wevtutil* cl*"
 ```
 process where process.command_line in~("certutil* -encode*","certutil* -decode*")
 ```
-
+### Command prompt used to disable Windows Firewall
+```
+process where process.command_line like~ "netsh* advfirewall* set* currentprofile* state* off*"
+```
 ## Powershell 
 ### Powershell Remoting Initiated 
 ```
@@ -34,11 +37,6 @@ process where process.command_line regex~ ".*GetString.*Convert.::FromBase64Stri
 ### Powershell used to clear event logs
 ```
 scripting where powershell_trace.script_block like~ "*Clear-EventLog*"
-```
-
-### Command prompt used to disable Windows Firewall
-```
-process where process.command_line like~ "netsh* advfirewall* set* currentprofile* state* off*"
 ```
 
 ## Living off the Land
