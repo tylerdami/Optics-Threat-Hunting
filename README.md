@@ -1,5 +1,7 @@
 # Optics-Threat-Hunting
-Some threat hunting queries for Cylance Optics advanced query mode. Cylance Official Advanced Query Mode Docs [Here](https://docs.blackberry.com/en/unified-endpoint-security/blackberry-ues/administration/administration/Analyzing-endpoint-data-collected-by-Optics/Using-InstaQuery-and-advanced-query/Create-an-advanced-query)
+Some threat hunting queries for Cylance Optics advanced query mode. 
+
+[Cylance Official Advanced Query Mode Docs](https://docs.blackberry.com/en/unified-endpoint-security/blackberry-ues/administration/administration/Analyzing-endpoint-data-collected-by-Optics/Using-InstaQuery-and-advanced-query/Create-an-advanced-query)
 
 ## Powershell 
 ### Powershell Remoting Initiated 
