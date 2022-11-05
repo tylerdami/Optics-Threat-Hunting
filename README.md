@@ -29,9 +29,12 @@ process where process.command_line like~ "netsh* advfirewall* set* currentprofil
 process where process.command_line in~ ("*net user /add*","*New-LocalUser*","*net localgroup administrators*")
 ```
 ## Powershell 
-### Powershell Remoting Initiated 
+### Powershell Remoting Initiated - https://attack.mitre.org/techniques/T1021/006/
 ```
+# Host based
 scripting where powershell_trace.script_block like~ "New-PSSession -ComputerName*" or powershell_trace.script_block like~ "Enter-PsSession*"
+# Network Based
+network where network.destination.port in~("5986","5985")
 ```
 ### PowerShell making network connection
 ```
