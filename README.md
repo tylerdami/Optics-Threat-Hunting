@@ -12,7 +12,7 @@ network where process.name in("powershell.exe", "pwsh.exe") and event.type == "c
 ```
 ### PowerShell Base64 Encrypted
 ```
-scripting where powershell_trace.script_block regex~ ".*powershell.*[--]+[Ee^]{1,2}[NnCcOoDdEeMmAa^].*[A-Za-z0-9+/=]{5,}"
+process where process.command_line regex~ ".*powershell.*[--]+[Ee^]{1,2}[NnCcOoDdEeMmAa^]{5,}"
 ```
 ### PowerShell Base64 Inline Decode
 
