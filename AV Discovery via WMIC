@@ -1,1 +1,0 @@
-process where process.name == "wmic.exe" and process.command_line like~ "/Namespace:\\\\root\\SecurityCenter2 Path AntiVirusProduct Get displayName /Format:List"
