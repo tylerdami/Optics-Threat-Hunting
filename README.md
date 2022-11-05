@@ -15,6 +15,9 @@ network where process.name in("powershell.exe", "pwsh.exe") and event.type == "c
 process where process.command_line regex~ ".*powershell.*[--]+[Ee^]{1,2}[NnCcOoDdEeMmAa^]{5,}"
 ```
 ### PowerShell Base64 Inline Decode
+```
+process where process.command_line regex~ ".*GetString.*Convert.::FromBase64String.*"
+```
 
 ## Living off the Land
 
