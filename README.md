@@ -1,5 +1,5 @@
 # Optics-Threat-Hunting
-Some threat hunting utilities for Cylance Optics. 
+Some threat hunting queries for Cylance Optics advanced query mode. 
 
 ## Powershell 
 ### Powershell Remoting Initiated 
