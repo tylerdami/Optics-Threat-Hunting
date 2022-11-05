@@ -45,7 +45,10 @@ process where process.command_line regex~ ".*GetString.*Convert.::FromBase64Stri
 ```
 scripting where powershell_trace.script_block like~ "*Clear-EventLog*"
 ```
-
+### Visual basic script run via CMD. 
+```
+process where process.name like~ "cmd.exe" and process.command_line like~ "*cscript*" 
+```
 ## Living off the Land
 
 ### LOLBAS all activity 
