@@ -28,35 +28,11 @@ process where process.command_line like~ "netsh* advfirewall* set* currentprofil
 ```
 process where process.command_line in~ ("*net user /add*","*New-LocalUser*","*net localgroup administrators*")
 ```
-## Powershell 
-### Powershell Remoting Initiated - https://attack.mitre.org/techniques/T1021/006/
-```
-# Host based
-scripting where powershell_trace.script_block like~ "New-PSSession -ComputerName*" or powershell_trace.script_block like~ "Enter-PsSession*"
-# Network Based
-network where network.destination.port in~("5986","5985")
-```
-### PowerShell making network connection
-```
-network where process.name in("powershell.exe", "pwsh.exe") and event.type == "connect"
-```
-### PowerShell Base64 Command
-```
-process where process.command_line regex~ ".*powershell.*[--]+[Ee^]{1,2}[NnCcOoDdEeMmAa^]{5,}"
-```
-### PowerShell Base64 Inline Decode
-```
-process where process.command_line regex~ ".*GetString.*Convert.::FromBase64String.*"
-```
-### Powershell used to clear event logs
-```
-scripting where powershell_trace.script_block like~ "*Clear-EventLog*"
-```
-### Visual basic script run via CMD. 
+### Visual basic script run via CMD. - https://attack.mitre.org/techniques/T1059/005/
 ```
 process where process.name like~ "cmd.exe" and process.command_line like~ "*cscript*" 
 ```
-## Living off the Land
+### **Living off the Land**
 
 ### LOLBAS all activity 
 ```
@@ -75,3 +51,28 @@ process where process.command_line like~ "C:\\Windows\\Temp\\*.exe"
 ```
 process where process.name == "wmic.exe" and process.command_line like~ "/Namespace:\\\\root\\SecurityCenter2 Path AntiVirusProduct Get displayName /Format:List"
 ```
+## Powershell 
+### Powershell Remoting Initiated - https://attack.mitre.org/techniques/T1021/006/
+```
+# Host based
+scripting where powershell_trace.script_block like~ "New-PSSession -ComputerName*" or powershell_trace.script_block like~ "Enter-PsSession*"
+# Network Based
+network where network.destination.port in~("5986","5985")
+```
+### PowerShell making network connection - https://attack.mitre.org/techniques/T1105/
+```
+network where process.name in("powershell.exe", "pwsh.exe") and event.type == "connect"
+```
+### PowerShell Base64 Command - https://attack.mitre.org/techniques/T1027/
+```
+process where process.command_line regex~ ".*powershell.*[--]+[Ee^]{1,2}[NnCcOoDdEeMmAa^]{5,}"
+```
+### PowerShell Base64 Inline Decode - https://attack.mitre.org/techniques/T1027/
+```
+process where process.command_line regex~ ".*GetString.*Convert.::FromBase64String.*"
+```
+### Powershell used to clear event logs - https://car.mitre.org/analytics/CAR-2016-04-002/
+```
+scripting where powershell_trace.script_block like~ "*Clear-EventLog*"
+```
+
