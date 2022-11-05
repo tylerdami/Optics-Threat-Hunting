@@ -8,10 +8,13 @@ Some threat hunting queries for Cylance Optics advanced query mode.
 ```
 process where process.command_line like~ "wevtutil* cl*"
 ```
-
 ### Certutil used to encrypt or decrypt files
 ```
 process where process.command_line in~("certutil* -encode*","certutil* -decode*")
+```
+### BitsADMIN transfer or download. 
+```
+process where process.name like~ "bitsadmin.exe" and process.command_line in~ ("*/Transfer*","*/Addfile*")
 ```
 ### Command prompt used to disable Windows Firewall
 ```
