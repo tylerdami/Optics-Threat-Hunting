@@ -17,6 +17,10 @@ process where process.command_line in~("certutil* -encode*","certutil* -decode*"
 ```
 process where process.command_line like~ "netsh* advfirewall* set* currentprofile* state* off*"
 ```
+### New Local User added or user added to administrators
+```
+process where process.command_line in~ ("*net user /add*","*New-LocalUser*","*net localgroup administrators*")
+```
 ## Powershell 
 ### Powershell Remoting Initiated 
 ```
