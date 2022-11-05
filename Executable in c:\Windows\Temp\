@@ -1,1 +1,0 @@
-process where process.command_line like~ "C:\\Windows\\Temp\\*.exe"
