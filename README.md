@@ -30,4 +30,6 @@ process where process.name in("bitsadmin.exe","csvde.exe","dsquery.exe","ftp.exe
 network where process.name in("bitsadmin.exe","csvde.exe","dsquery.exe","ftp.exe","makecab.exe","nbtstat.exe","net1.exe","netstat.exe","nslookup.exe","ping.exe","quser.exe","route.exe","schtasks.exe","taskkill.exe","tasklist.exe", "whoami.exe","xcopy.exe","psexec.exe") and event.type == "connect"
 ```
 ### Exectuable running from C:\Windows\Temp
+```
 process where process.command_line like~ "C:\\Windows\\Temp\\*.exe"
+```
