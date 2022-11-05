@@ -10,7 +10,7 @@ scripting where powershell_trace.script_block like~ "New-PSSession -ComputerName
 ```
 network where process.name in("powershell.exe", "pwsh.exe") and event.type == "connect"
 ```
-### PowerShell Base64 Encrypted
+### PowerShell Base64 Command
 ```
 process where process.command_line regex~ ".*powershell.*[--]+[Ee^]{1,2}[NnCcOoDdEeMmAa^]{5,}"
 ```
