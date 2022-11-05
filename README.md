@@ -11,8 +11,9 @@ scripting where powershell_trace.script_block like~ "New-PSSession -ComputerName
 network where process.name in("powershell.exe", "pwsh.exe") and event.type == "connect"
 ```
 ### PowerShell Base64 Encrypted
-process where process.command_line regex~ ".*powershell.*[--]+[Ee^]{1,2}[NnCcOoDdEeMmAa^]*\\W+[A-Za-z0-9+//=]{5,}"
-
+```
+scripting where powershell_trace.script_block regex~ ".*powershell.*[--]+[Ee^]{1,2}[NnCcOoDdEeMmAa^].*[A-Za-z0-9+/=]{5,}"
+```
 ### PowerShell Base64 Inline Decode
 
 ## Living off the Land
