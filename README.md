@@ -6,7 +6,7 @@ Some threat hunting queries for Cylance Optics advanced query mode.
 ## Windows General Threat Hunting
 #### Services.exe launching scripting engine - https://car.mitre.org/analytics/CAR-2014-05-002/
 ```
-process where process.name in~ ("cmd.exe", "powershell.exe","pwsh.exe") and process.parent.name like~ "services.exe"
+process where process.name in~ ("cmd.exe", "powershell.exe","pwsh.exe","cscript.exe","wscript.exe") and process.parent.name like~ "services.exe"
 ```
 #### Windows event logs cleared - https://car.mitre.org/analytics/CAR-2016-04-002/
 ```
