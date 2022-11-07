@@ -67,6 +67,7 @@ network where process.name in("powershell.exe", "pwsh.exe") and event.type == "c
 ```
 process where process.command_line regex~ ".*powershell.*[--]+[Ee^]{1,2}[NnCcOoDdEeMmAa^]+ [A-Za-z0-9+/=]{5,}"
 ```
+Regex from here: https://unit42.paloaltonetworks.com/unit42-pulling-back-the-curtains-on-encodedcommand-powershell-attacks/ and CylanceGuard. 
 #### PowerShell Base64 Inline Decode - https://attack.mitre.org/techniques/T1027/
 ```
 scripting where powershell_trace.script_block regex~ ".*GetString.*Convert.::FromBase64String.*"
