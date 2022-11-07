@@ -69,7 +69,7 @@ process where process.command_line regex~ ".*powershell.*[--]+[Ee^]{1,2}[NnCcOoD
 ```
 #### PowerShell Base64 Inline Decode - https://attack.mitre.org/techniques/T1027/
 ```
-process where process.command_line regex~ ".*GetString.*Convert.::FromBase64String.*"
+scripting where powershell_trace.script_block regex~ ".*GetString.*Convert.::FromBase64String.*"
 ```
 #### Powershell used to clear event logs - https://car.mitre.org/analytics/CAR-2016-04-002/
 ```
